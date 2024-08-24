@@ -15,6 +15,11 @@
   font-family: poppinsRegular;
   src: url('../fonts/poppins/Poppins-Regular.ttf');
 }
+@font-face {
+  font-family: ambroise;
+  src: url('../fonts/ambroise/Ambroise Regular.otf');
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -53,15 +58,17 @@ body {
   transform: translate(-50%, -50%);
   z-index: 500;
 }
-
-.home-section-one {
-  display: grid;
-  place-items: center;
+section {
   width: 100%;
   height: 100vh;
 }
-.home-section-one,
-.social_media_icons {
+.home_section {
+  display: grid;
+  place-items: center;
+}
+.home_section,
+.social_media_icons,
+.about_section {
   position: relative;
 }
 .logo {
@@ -72,22 +79,28 @@ body {
   transition: 0.2s ease-out;
   left: 5rem;
 }
-.home-section-one:hover .hello_word {
-  letter-spacing: -0.5rem;
+section:hover .section_title {
+  letter-spacing: 0rem;
 }
-.hello_word {
-  font-family: poppins;
+.section_title,
+.my_name {
+  /* font-family: poppins; */
+  font-family: ambroise;
+  font-weight: 400;
+}
+.section_title {
   color: var(--soft-grey-color);
   font-size: 30rem;
-  font-weight: 700;
   opacity: 0.2;
-  letter-spacing: -1.5rem;
+  letter-spacing: -0.8rem;
   transition: 0.6s;
-  position: absolute;
-  top: 1.5rem;
   cursor: default;
 }
-.home-section-one .increase_cursor {
+.hello_word {
+  position: absolute;
+  top: 1.5rem;
+}
+.home_section .increase_cursor {
   color: var(--contrast-color);
   font-size: 14rem;
   font-weight: 400;
@@ -98,7 +111,7 @@ body {
 }
 .social_media_icons {
   position: fixed;
-  bottom: 4rem;
+  bottom: 2rem;
   left: 4rem;
 }
 
@@ -177,3 +190,69 @@ nav a {
   width: 100%;
 }
 /* end nav bar */
+.logo,
+nav,
+.social_media_icons {
+  z-index: 400;
+}
+
+/* about me section */
+.about_section {
+  display: grid;
+  justify-content: center;
+  padding-top: 3rem;
+}
+
+.about_title {
+  font-size: 25rem;
+  width: fit-content;
+  height: fit-content;
+}
+.about_section .my_name {
+  font-size: 8rem;
+  color: var(--contrast-color);
+  position: absolute;
+  top: 20rem;
+  left: 15rem;
+  transition: 0.6s;
+}
+.about_section:hover .my_name {
+  left: 12rem;
+}
+/* about me section */
+
+@media (max-width: 950px) {
+  .hello_word {
+    top: 6rem;
+    font-size: 19rem;
+  }
+
+  .home_section .increase_cursor {
+    font-size: 9rem;
+    top: 8rem;
+  }
+  .logo,
+  .social_media_icons {
+    left: 2rem;
+  }
+  nav {
+    right: -21rem;
+  }
+  /* about section */
+  .about_section {
+    padding: 4rem;
+  }
+  .about_title {
+    font-size: 18rem;
+    line-height: 14rem;
+  }
+  .about_section .my_name {
+    left: 5rem;
+    top: 26.8rem;
+    font-size: 4.5rem;
+  }
+  .about_section:hover .my_name {
+    left: 5rem;
+  }
+  /* about section */
+}

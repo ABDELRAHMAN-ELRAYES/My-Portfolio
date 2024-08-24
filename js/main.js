@@ -21,12 +21,21 @@ all.forEach(element => {
   });
 });
 
+let cursorPositionX ,cursorPositionY;
 function movecursorSign(e) {
-  cursorSign.style.top = `${e.clientY}px`;
-  cursorSign.style.left = `${e.clientX}px`;
+  cursorPositionX = e.clientX;
+  cursorPositionY=e.clientY;
+  let windowScrollX = window.scrollX;
+  let windowScrollY = window.scrollY;
+  cursorSign.style.left = `${cursorPositionX+ windowScrollX}px`;
+  cursorSign.style.top = `${cursorPositionY + windowScrollY}px`;
 }
-
 document.addEventListener('mousemove', movecursorSign);
+
+window.addEventListener('scroll',(e)=>{
+  cursorSign.style.left = `${cursorPositionX+window.scrollX}px`;
+  cursorSign.style.top = `${cursorPositionY+window.scrollY}px`;
+})
 // make the cursor sign hidden when hover on logo or icon
 let icons = document.querySelectorAll('.icon');
 let logo = document.querySelector('.logo');
@@ -43,7 +52,6 @@ let navLinks = document.querySelectorAll('.nav_link');
 let nav = document.querySelector('nav');
 nav.addEventListener('click', e => {
   e.preventDefault();
-  console.log(e.target);
   if (e.target.closest('.nav_link')) {
     navLinks.forEach(element => {
       element.classList.remove('current_link');
