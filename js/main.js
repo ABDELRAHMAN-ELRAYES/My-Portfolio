@@ -3,6 +3,8 @@
 // make the tracking cursor sign
 let all = document.querySelectorAll('.increase_cursor');
 let cursorSign = document.getElementById('cursor_sign');
+// make the nav bar change the activated nav_link on scroll
+let sections = document.querySelectorAll('section');
 const normalizecursorSign = () => {
   cursorSign.style.width = '2rem';
   cursorSign.style.height = '2rem';
@@ -21,21 +23,22 @@ all.forEach(element => {
   });
 });
 
-let cursorPositionX ,cursorPositionY;
+let cursorPositionX, cursorPositionY;
 function movecursorSign(e) {
   cursorPositionX = e.clientX;
-  cursorPositionY=e.clientY;
+  cursorPositionY = e.clientY;
   let windowScrollX = window.scrollX;
   let windowScrollY = window.scrollY;
-  cursorSign.style.left = `${cursorPositionX+ windowScrollX}px`;
+  cursorSign.style.left = `${cursorPositionX + windowScrollX}px`;
   cursorSign.style.top = `${cursorPositionY + windowScrollY}px`;
 }
 document.addEventListener('mousemove', movecursorSign);
 
-window.addEventListener('scroll',(e)=>{
-  cursorSign.style.left = `${cursorPositionX+window.scrollX}px`;
-  cursorSign.style.top = `${cursorPositionY+window.scrollY}px`;
-})
+window.addEventListener('scroll', e => {
+  cursorSign.style.left = `${cursorPositionX + window.scrollX}px`;
+  cursorSign.style.top = `${cursorPositionY + window.scrollY}px`;
+
+});
 // make the cursor sign hidden when hover on logo or icon
 let icons = document.querySelectorAll('.icon');
 let logo = document.querySelector('.logo');
@@ -57,6 +60,10 @@ nav.addEventListener('click', e => {
       element.classList.remove('current_link');
     });
     e.target.closest('.nav_link').classList.add('current_link');
+
+    const sectionId = e.target.closest('.nav_link').dataset.sectionId;
+    const section = document.getElementById(sectionId);
+    section.scrollIntoView({ behavior: 'smooth' });
   }
 });
 // set resume and email icons

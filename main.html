@@ -18,7 +18,7 @@
 
     <dev id="cursor_sign"></dev>
 
-    <section class="home_section">
+    <section class="home_section" id="home">
       <h1 class="section_title hello_word">HELLO</h1>
       <h1 class="increase_cursor">Abdelrahman Elrayes</h1>
       <img src="img/logo.gif" class="logo" alt="" />
@@ -58,25 +58,80 @@
       </div>
       <nav>
         <ul class="nav_links">
-          <li class="nav_link current_link"><a href="">Home</a></li>
-          <li class="nav_link"><a href="">About</a></li>
-          <li class="nav_link"><a href="">Experience</a></li>
-          <li class="nav_link"><a href="">Portfolio</a></li>
-          <li class="nav_link"><a href="">Contact</a></li>
+          <li class="nav_link current_link" data-section-id="home">
+            <a href="">Home</a>
+          </li>
+          <li class="nav_link" data-section-id="about"><a href="">About</a></li>
+          <li class="nav_link" data-section-id="experience">
+            <a href="">Experience</a>
+          </li>
+          <li class="nav_link" data-section-id="portfolio">
+            <a href="">Portfolio</a>
+          </li>
+          <li class="nav_link" data-section-id="contact">
+            <a href="">Contact</a>
+          </li>
         </ul>
       </nav>
-      <!-- <div class="scroll_mouse_icon">
-        <div id="animated_mouse_icon"></div>
-      </div> -->
+      <p class="opening_sentences">
+        Explore a selection of my work in
+        <span class="highlighted_word">backend development</span> and
+        <span class="highlighted_word">problem-solving</span>. This portfolio
+        reflects my commitment to excellence and my ability to create effective,
+        scalable solutions. I invite you to browse through my projects to see
+        how I apply my technical skills to deliver impactful results.
+      </p>
     </section>
-    <section class="about_section">
+    <section class="about_section" id="about">
       <h1 class="section_title about_title">About me</h1>
-      <h1 class="my_name increase_cursor">Abdelrahman Erayes</h1>
+      <h1 class="my_name increase_cursor">Abdelrahman Elrayes</h1>
+      <div class="presentations">
+        <div class="presentation_section presentation_section_one">
+          <p class="presentation presentation_one">
+            I am currently pursuing my studies in the
+            <span class="highlighted_word">Faculty of Computer Science</span> at
+            <span class="highlighted_word">Kafrelsheikh University</span> in
+            <span class="highlighted_word">Egypt</span>. As a passionate
+            <span class="highlighted_word">backend software engineer</span>, I
+            specialize in developing robust and efficient server-side
+            applications. My academic journey and professional experience have
+            honed my skills in various programming languages and frameworks,
+            enabling me to build scalable and high-performance systems.
+          </p>
+          <div class="skills skills_one"></div>
+        </div>
+        <div class="presentation_section presentation_section_two">
+          <div class="skills skills_two"></div>
+          <p class="presentation presentation_two">
+            In addition to my
+            <span class="highlighted_word">backend development expertise</span>,
+            I am deeply interested in
+            <span class="highlighted_word">competitive programming</span> and
+            <span class="highlighted_word">problem-solving</span>. I enjoy the
+            challenge of tackling complex algorithms and finding optimized
+            solutions to intricate problems. This passion for coding and
+            continuous learning drives me to stay updated with the latest
+            industry trends and advancements.
+          </p>
+        </div>
+        <div class="presentation_section presentation_section_three">
+          <p class="presentation presentation_three">
+            I am committed to leveraging my knowledge and skills to contribute
+            to innovative projects and make a meaningful impact in the field of
+            <span class="highlighted_word">software engineering</span>.
+          </p>
+          <div class="skills skills_three"></div>
+        </div>
+      </div>
     </section>
-
-    <!-- <section
-      class="about_section"
-      style="background-color: bisque"
-    ></section> -->
+    <section class="experience_section" id="experience">
+      <h1 class="section_title experience_title">Experience</h1>
+    </section>
+    <section class="portfolio_section" id="portfolio">
+      <h1 class="section_title portfolio_title">Portfolio</h1>
+    </section>
+    <section class="contact_section" id="contact">
+      <h1 class="section_title contact_title">Contact me</h1>
+    </section>
   </body>
 </html>

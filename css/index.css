@@ -95,6 +95,8 @@ section:hover .section_title {
   letter-spacing: -0.8rem;
   transition: 0.6s;
   cursor: default;
+  display: grid;
+  justify-content: center;
 }
 .hello_word {
   position: absolute;
@@ -153,6 +155,18 @@ ul {
 .resume_viewer {
   bottom: 2rem;
 }
+.opening_sentences {
+  width: 33rem;
+  letter-spacing: 0.6px;
+  position: absolute;
+  right: 20rem;
+  bottom: 15rem;
+  font-size: 1rem;
+  color: var(--soft-grey-color);
+}
+.highlighted_word {
+  color: var(--grey-color);
+}
 /*start nav bar  */
 nav {
   height: fit-content;
@@ -189,23 +203,23 @@ nav a {
   height: 2px;
   width: 100%;
 }
-/* end nav bar */
+
 .logo,
 nav,
 .social_media_icons {
   z-index: 400;
 }
-
+/* end nav bar */
 /* about me section */
-.about_section {
-  display: grid;
-  justify-content: center;
+.about_section,
+.experience_section,
+.portfolio_section,
+.contact_section {
   padding-top: 3rem;
 }
 
 .about_title {
   font-size: 25rem;
-  width: fit-content;
   height: fit-content;
 }
 .about_section .my_name {
@@ -219,7 +233,58 @@ nav,
 .about_section:hover .my_name {
   left: 12rem;
 }
+.presentations {
+  width: fit-content;
+  position: absolute;
+  left: 15rem;
+  top: 32rem;
+  color: var(--soft-grey-color);
+}
+.presentation_section {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+.presentation {
+  width: 40rem;
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 0.5px solid var(--soft-grey-color);
+}
+.skills {
+  width: 40rem;
+  /* border: 0.5px solid var(--soft-grey-color); */
+  border-radius: 0.5rem;
+}
+.skills_one {
+  height: 150px;
+}
+.skills_two {
+  height: 125px;
+}
+.skills_three {
+  height: 75px;
+}
+.presentation_two,
+.skills_one,
+.skills_three {
+  margin-left: 3rem;
+}
 /* about me section */
+/* experience section */
+.experience_title,
+.portfolio_title,
+.contact_title {
+  font-size: 23rem;
+}
+/* experience section */
+
+/* portfolio section */
+/* portfolio section */
+
+/* contact me section */
+/* contact me section */
 
 @media (max-width: 950px) {
   .hello_word {
@@ -238,9 +303,16 @@ nav,
   nav {
     right: -21rem;
   }
+  .opening_sentences {
+    right: 8rem;
+    bottom: 19rem;
+  }
   /* about section */
   .about_section {
     padding: 4rem;
+    padding-top: 0rem;
+    min-height: 100vh;
+    height: fit-content;
   }
   .about_title {
     font-size: 18rem;
@@ -248,11 +320,40 @@ nav,
   }
   .about_section .my_name {
     left: 5rem;
-    top: 26.8rem;
+    top: 22.8rem;
     font-size: 4.5rem;
   }
   .about_section:hover .my_name {
     left: 5rem;
+  }
+  .experience_title {
+    font-size: 12rem;
+  }
+  .portfolio_title,
+  .contact_title {
+    font-size: 16rem;
+  }
+  .contact_title {
+    line-height: 14rem;
+  }
+  .presentations {
+    left: 8rem;
+    top: 31rem;
+  }
+  .presentation_section {
+    flex-direction: column;
+  }
+  .presentation_two,
+  .skills_one,
+  .skills_three {
+    margin-left: 0rem;
+  }
+  .skills,
+  .presentation {
+    margin-top: 1rem;
+  }
+  .skills {
+    display: none;
   }
   /* about section */
 }
