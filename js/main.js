@@ -3,8 +3,9 @@
 // make the tracking cursor sign
 let all = document.querySelectorAll('.increase_cursor');
 let cursorSign = document.getElementById('cursor_sign');
-// make the nav bar change the activated nav_link on scroll
 let sections = document.querySelectorAll('section');
+let navLinks = document.querySelectorAll('.nav_link');
+
 const normalizecursorSign = () => {
   cursorSign.style.width = '2rem';
   cursorSign.style.height = '2rem';
@@ -38,11 +39,24 @@ window.addEventListener('scroll', e => {
   cursorSign.style.left = `${cursorPositionX + window.scrollX}px`;
   cursorSign.style.top = `${cursorPositionY + window.scrollY}px`;
 
+  //make the active nav link according to the current section on scroll
+  let currentSection;
+  sections.forEach(sec => {
+    if (pageYOffset >= sec.offsetTop - sec.getBoundingClientRect().height / 2) {
+      currentSection = sec;
+    }
+  });
+  navLinks.forEach(link => {
+    let activeLink = link.getAttribute('data-section-id');
+    link.classList.remove('current_link');
+    if (activeLink === currentSection.getAttribute('id')) {
+      link.classList.add('current_link');
+    }
+  });
 });
 // make the cursor sign hidden when hover on logo or icon
 let icons = document.querySelectorAll('.icon');
 let logo = document.querySelector('.logo');
-let navLinks = document.querySelectorAll('.nav_link');
 [...icons, logo, ...navLinks].forEach(element => {
   element.addEventListener('mouseenter', () => {
     cursorSign.style.zIndex = '-1';
