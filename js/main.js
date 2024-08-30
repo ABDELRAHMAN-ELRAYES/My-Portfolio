@@ -1,5 +1,8 @@
 'use strict';
-
+let homeTitle = document.querySelector('.hello_word');
+document.addEventListener('DOMContentLoaded', () => {
+  homeTitle.classList.add('animate_section_title');
+});
 // make the tracking cursor sign
 let all = document.querySelectorAll('.increase_cursor');
 let cursorSign = document.getElementById('cursor_sign');
@@ -39,11 +42,15 @@ window.addEventListener('scroll', e => {
   cursorSign.style.left = `${cursorPositionX + window.scrollX}px`;
   cursorSign.style.top = `${cursorPositionY + window.scrollY}px`;
 
-  //make the active nav link according to the current section on scroll
+  //make the active nav link according to the current section on scroll and make the title of each section animated
   let currentSection;
   sections.forEach(sec => {
+    let sectionTitle = sec.querySelector('.section_title');
     if (pageYOffset >= sec.offsetTop - sec.getBoundingClientRect().height / 2) {
       currentSection = sec;
+      sectionTitle.classList.add('animate_section_title');
+    } else {
+      sectionTitle.classList.remove('animate_section_title');
     }
   });
   navLinks.forEach(link => {
@@ -127,4 +134,24 @@ icons.forEach(icon => {
   icon.addEventListener('mouseout', e => {
     icon.style.transform = ``;
   });
+});
+
+// to make the section appear when arrive to it
+let secCallback = function (entries, observer) {
+  let [entry] = entries;
+  if (entry.isIntersecting) {
+    entry.target.classList.remove('hidden_section');
+    // observer.unobserve(entry.target);
+  }
+  //  else {
+  //   entry.target.classList.add('hidden_section');
+  // }
+};
+let secOptions = {
+  root: null,
+  threshold: 0.15,
+};
+const secObserver = new IntersectionObserver(secCallback, secOptions);
+sections.forEach(function (section) {
+  secObserver.observe(section);
 });

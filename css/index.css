@@ -63,6 +63,9 @@ section {
   min-height: 100vh;
   height: fit-content;
 }
+/* .hidden_section {
+  opacity: 1;
+} */
 .home_section {
   display: grid;
   place-items: center;
@@ -97,6 +100,12 @@ section:hover .section_title {
   cursor: default;
   display: grid;
   justify-content: center;
+  transform:translateX(-100%);
+  transition:1.2s;
+}
+.animate_section_title{
+  transform:translateX(0%);
+  
 }
 .hello_word {
   position: absolute;
@@ -155,14 +164,36 @@ ul {
 .resume_viewer {
   bottom: 2rem;
 }
+.job_title {
+  color: var(--grey-color);
+  font-family: 'ambroise';
+  font-size: 4.5rem;
+  font-weight: 400;
+  position: absolute;
+  top: 37rem;
+  right: 16rem;
+}
 .opening_sentences {
-  width: 33rem;
+  width: 50rem;
   letter-spacing: 0.6px;
   position: absolute;
-  right: 20rem;
-  bottom: 15rem;
+  right: 15.3rem;
   font-size: 1rem;
   color: var(--soft-grey-color);
+  line-height: 20px;
+}
+.opening_sentences_1 {
+  bottom: 10rem;
+}
+.opening_sentences_2 {
+  bottom: 5.5rem;
+}
+.markable_word {
+  font-family: 'ambroise';
+  font-size: 3rem;
+  padding-right: 0.5rem;
+  color: var(--contrast-color);
+  font-weight: 400;
 }
 .highlighted_word {
   color: var(--grey-color);
@@ -280,6 +311,7 @@ nav,
   font-size: 2.5rem;
   display: grid;
   place-items: center;
+  font-weight: 400;
 }
 .skills_sections {
   margin-top: 1.5rem;
@@ -324,10 +356,24 @@ nav,
 
 /* about me section */
 /* experience section */
+.experience_section {
+  display: flex;
+}
 .experience_title,
 .portfolio_title,
 .contact_title {
   font-size: 23rem;
+}
+.experience_title {
+  height: fit-content;
+  width: fit-content;
+  line-height: 17rem;
+  margin-left: 10rem;
+  margin-top: 21rem;
+}
+.experience_side {
+  margin-left: 8rem;
+  margin-top: 10rem;
 }
 /* experience section */
 
