@@ -53,18 +53,19 @@ window.addEventListener('scroll', e => {
       sectionTitle.classList.remove('animate_section_title');
     }
   });
-  navLinks.forEach(link => {
-    let activeLink = link.getAttribute('data-section-id');
-    link.classList.remove('current_link');
-    if (activeLink === currentSection.getAttribute('id')) {
-      link.classList.add('current_link');
-    }
-  });
+  // navLinks.forEach(link => {
+  //   let activeLink = link.getAttribute('data-section-id');
+  //   link.classList.remove('current_link');
+  //   if (activeLink === currentSection.getAttribute('id')) {
+  //     link.classList.add('current_link');
+  //   }
+  // });
 });
 // make the cursor sign hidden when hover on logo or icon
 let icons = document.querySelectorAll('.icon');
 let logo = document.querySelector('.logo');
-[...icons, logo, ...navLinks].forEach(element => {
+let toggleBtns = document.querySelectorAll('.toggle_container');
+[...icons, logo, ...navLinks, ...toggleBtns].forEach(element => {
   element.addEventListener('mouseenter', () => {
     cursorSign.style.zIndex = '-1';
   });
@@ -137,21 +138,37 @@ icons.forEach(icon => {
 });
 
 // to make the section appear when arrive to it
+// change the color of the active nav bar link
 let secCallback = function (entries, observer) {
   let [entry] = entries;
   if (entry.isIntersecting) {
-    entry.target.classList.remove('hidden_section');
+    console.log(entry.target);
+    navLinks.forEach(link => {
+      let activeLink = link.getAttribute('data-section-id');
+      link.classList.remove('current_link');
+      if (activeLink === entry.target.getAttribute('id')) {
+        link.classList.add('current_link');
+      } else {
+        link.classList.remove('current_link');
+      }
+    });
     // observer.unobserve(entry.target);
   }
-  //  else {
-  //   entry.target.classList.add('hidden_section');
-  // }
 };
 let secOptions = {
   root: null,
-  threshold: 0.15,
+  threshold: 0.1,
 };
 const secObserver = new IntersectionObserver(secCallback, secOptions);
 sections.forEach(function (section) {
   secObserver.observe(section);
+});
+// to switch between presentationa and stack section
+let aboutToggle = document.getElementById('about_toggle');
+aboutToggle.addEventListener('change', function () {
+  if (this.checked) {
+    console.log('on');
+  } else {
+    console.log('off');
+  }
 });
