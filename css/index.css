@@ -48,6 +48,9 @@ body {
   position: relative;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
 ::selection {
   background-color: var(--contrast-color);
   color: var(--grey-color);
@@ -479,6 +482,9 @@ nav,
   margin-left: 8rem;
   margin-top: 10rem;
 }
+.animate_project_overview {
+  transform: translateX(-80%);
+}
 /* experience section */
 
 /* portfolio section */
@@ -530,6 +536,7 @@ nav,
   position: absolute;
   background-color: var(--contrast-color);
   border-radius: 1.5rem;
+  transition: 0.6s;
   /* bottom: 3rem; */
 }
 .project_viewer {
@@ -543,11 +550,46 @@ nav,
   backdrop-filter: blur(10px);
   border: 1px solid var(--soft-grey-color);
   right: -51rem;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .portfolio_section .project_viewer img {
   width: 50rem;
   border-radius: 1.5rem;
 }
+.porject_title {
+  font-size: 3rem;
+  color: var(--grey-color);
+  font-family: 'ambroise';
+  font-weight: 400;
+  margin-bottom: 3rem;
+}
+.project_description {
+  color: var(--soft-grey-color);
+  font-size: 1.1rem;
+  width: 90%;
+  margin-bottom: 2rem;
+}
+.project_icon_div {
+  position: relative;
+  display: flex;
+  margin-bottom: 5rem;
+}
+.project_visit_btn {
+  width: 10rem;
+  height: 4rem;
+  background-color: transparent;
+  border: 0.5px solid var(--contrast-color);
+  border-radius: 0.5rem;
+}
+.project_visit_btn a {
+  color: var(--contrast-color);
+  font-size: 1.4rem;
+  font-family: 'ambroise';
+}
+
 /* #card1 .card-body {
   background-color: transparent;
 }

@@ -64,15 +64,22 @@ window.addEventListener('scroll', e => {
 // make the cursor sign hidden when hover on logo or icon
 let icons = document.querySelectorAll('.icon');
 let logo = document.querySelector('.logo');
+
+// make the cursor sign disappear when enter the toggle btn zone
+
 let toggleBtns = document.querySelectorAll('.toggle_container');
-[...icons, logo, ...navLinks, ...toggleBtns].forEach(element => {
-  element.addEventListener('mouseenter', () => {
-    cursorSign.style.zIndex = '-1';
-  });
-  element.addEventListener('mouseleave', () => {
-    cursorSign.style.zIndex = '500';
-  });
-});
+let projectBtns = document.querySelectorAll('.project_visit_btn');
+
+[...icons, logo, ...projectBtns, ...navLinks, ...toggleBtns].forEach(
+  element => {
+    element.addEventListener('mouseenter', () => {
+      cursorSign.style.zIndex = '-1';
+    });
+    element.addEventListener('mouseleave', () => {
+      cursorSign.style.zIndex = '500';
+    });
+  }
+);
 // make the nav bar
 let nav = document.querySelector('nav');
 nav.addEventListener('click', e => {
@@ -138,37 +145,68 @@ icons.forEach(icon => {
 });
 
 // to make the section appear when arrive to it
+
+
 // change the color of the active nav bar link
-let secCallback = function (entries, observer) {
-  let [entry] = entries;
-  if (entry.isIntersecting) {
-    console.log(entry.target);
-    navLinks.forEach(link => {
-      let activeLink = link.getAttribute('data-section-id');
-      link.classList.remove('current_link');
-      if (activeLink === entry.target.getAttribute('id')) {
-        link.classList.add('current_link');
-      } else {
-        link.classList.remove('current_link');
-      }
-    });
-    // observer.unobserve(entry.target);
-  }
-};
-let secOptions = {
-  root: null,
-  threshold: 0.1,
-};
-const secObserver = new IntersectionObserver(secCallback, secOptions);
-sections.forEach(function (section) {
-  secObserver.observe(section);
-});
+// let secCallback = function (entries, observer) {
+//   let [entry] = entries;
+//   if (entry.isIntersecting) {
+//     navLinks.forEach(link => {
+//       let activeLink = link.getAttribute('data-section-id');
+//       link.classList.remove('current_link');
+//       if (activeLink === entry.target.getAttribute('id')) {
+//         link.classList.add('current_link');
+//       } else {
+//         link.classList.remove('current_link');
+//       }
+//     });
+//     // observer.unobserve(entry.target);
+//   }
+// };
+// let secOptions = {
+//   root: null,
+//   threshold: 0.15,
+// };
+// const secObserver = new IntersectionObserver(secCallback, secOptions);
+// sections.forEach(function (section) {
+//   secObserver.observe(section);
+// });
+
 // to switch between presentationa and stack section
-let aboutToggle = document.getElementById('about_toggle');
-aboutToggle.addEventListener('change', function () {
-  if (this.checked) {
-    console.log('on');
-  } else {
-    console.log('off');
-  }
+let toggleCheckbox = document.querySelectorAll('.toggle-input');
+toggleCheckbox.forEach(btn => {
+  btn.addEventListener('change', function () {
+    if (btn.closest('.card-body')) {
+      let leftSideDiv = btn
+        .closest('.card-body')
+        .querySelector('.project_viewer');
+      let rightSideDiv = btn
+        .closest('.card-body')
+        .querySelector('.project_info');
+
+      if (this.checked) {
+        rightSideDiv.classList.add('animate_project_overview');
+        leftSideDiv.classList.add('animate_project_overview');
+      } else {
+        rightSideDiv.classList.remove('animate_project_overview');
+        leftSideDiv.classList.remove('animate_project_overview');
+      }
+    }
+  });
+});
+// solve the bug of the navbar
+sections.forEach(sec => {
+  sec.addEventListener('mouseover', event => {
+    let targetSection = event.target.closest('.section');
+    if (targetSection) {
+      let activeLink = document.querySelector(
+        `[data-section-id="${targetSection.id}"]`
+      );
+      console.log(activeLink);
+      navLinks.forEach(link => {
+        link.classList.remove('current_link');
+      });
+      activeLink.classList.add('current_link');
+    }
+  });
 });
